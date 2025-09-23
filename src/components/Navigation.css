@@ -1,0 +1,30 @@
+.navigation {
+  background-color: #333;
+  border-bottom: 2px solid #444;
+  box-shadow: 0 4px 10px 0 #e11f15;
+  height: 50px;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.logo {
+  height: 100px;
+  width: auto;
+  position: absolute;
+  left: 10px;
+}
+
+.nav-links {
+  display: flex;
+  gap: 15px;
+  margin: 0 auto;
+}
+
+.nav-links a {
+  color: white;
+  font-weight: 1000;
+  font-size: larger;
+  text-decoration: none;
+}

@@ -1,15 +1,17 @@
 import { useState } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Navigation from "./components/Navigation";
 import Home from "./pages/Home";
-import Detail from "./pages/Detail";
 import List from "./pages/List";
-import Navigation from "./assets/Navigation";
+import Detail from "./pages/Detail";
+import "./App.css";
 
 function App() {
   const [count, setCount] = useState(0);
 
   return (
     <>
+      
       <BrowserRouter>
         <Navigation />
         <Routes>
