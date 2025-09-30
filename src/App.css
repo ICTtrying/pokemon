@@ -7,7 +7,40 @@
 
 body {
   font-family: Arial, sans-serif;
-  background-color: #f4f4f4;
+  background-color: #d4d4d4;
   margin: 0;
   padding: 0;
+}
+
+.header-sub-text {
+  font-weight: 700;
+}
+
+.Team-Container {
+  /* display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around; */
+
+  display: grid;
+  /* grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); */
+  grid-template-columns: repeat(3, 400px);
+  justify-content: center;
+  gap: 1rem; /* optioneel */
+
+  & div {
+    border: 1px solid #F00;
+  }
+}
+
+@media (max-width: 900px) {
+  .Team-Container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .Team-Container {
+    grid-template-columns: 1fr;
+  }
 }
