@@ -1,9 +1,11 @@
 import React from "react";
+import PokemonList from "../components/PokemonList";
 
 const List = () => (
-  <div>
-    <h1>Welcome to the List Page</h1>
-  </div>
+  <>
+      <h1>Welcome to the List Page</h1>
+        <PokemonList />
+  </>
 );
 
 export default List;

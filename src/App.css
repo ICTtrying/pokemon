@@ -1,3 +1,7 @@
+* {
+  box-sizing: border-box;
+}
+
 #root {
   max-width: 100%;
   margin: 0;
@@ -7,9 +11,11 @@
 
 body {
   font-family: Arial, sans-serif;
-  background-color: #d4d4d4;
+  background-color: #373737;
   margin: 0;
   padding: 0;
+  padding-bottom: 20px;
+  color: white;
 }
 
 .header-sub-text {
@@ -17,29 +23,285 @@ body {
 }
 
 .Team-Container {
-  /* display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-around; */
-
   display: grid;
-  /* grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); */
-  grid-template-columns: repeat(3, 400px);
+  gap: 20px;
+  grid-template-columns: auto auto auto;
   justify-content: center;
-  gap: 1rem; /* optioneel */
-
-  & div {
-    border: 1px solid #F00;
-  }
+  max-width: 1200px;
+  width: 70%;
+  margin: 50px auto 0 auto;
+  justify-items: center;
+  background-color: #5e5e5e;
+  border-radius: 10px;
+  padding: 50px;
+  position: relative;
 }
 
-@media (max-width: 900px) {
+.Team-Container::before {
+  content: '';
+  position: absolute;
+  top: -5px; 
+  left: -5px;
+  width: calc(100% + 10px);
+  height: calc(100% + 10px);
+  background: linear-gradient(to right, rgb(255, 191, 0), red);
+  box-shadow: 0 0 20px 5px rgba(255, 0, 0, 0.5);
+  border-radius: 14px;
+  z-index: -1;
+}
+
+
+
+.listlink-card {
+  font-size: larger;
+  position: relative;
+  background-color: rgb(113, 113, 113);
+  border: 3px solid rgb(255, 98, 0);
+  border-radius: 10px;
+  padding: 10px;
+  z-index: 3;
+}
+
+.listlink-card>ul {
+  text-align: left;
+}
+
+.pokemoncard {
+  width: 200px;
+  height: 300px;
+  padding: 0;
+  background-color: #5e5e5e;
+  border-radius: 10px;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  position: relative;
+  transition: color 0.2s;
+}
+
+.pokemoncard:hover {
+  color: rgb(250, 159, 47);
+  cursor: pointer;
+}
+
+.pokemoncard:before {
+  content: '';
+  position: absolute;
+  top: -2%;
+  left: -3%;
+  width: 106%;
+  height: 104%;
+  background: linear-gradient(to right, orange, rgb(253, 75, 43));
+  box-shadow: 0 0 10px 2px rgb(255, 0, 0);
+  z-index: -1;
+  border-radius: 10px;
+}
+
+.spritepokimoncard {
+  position: relative;
+  width: 100%;
+  top: 0px;
+}
+
+.pokemoncard:after {
+  content: attr(data-name);
+  font-size: 1.25rem;
+  font-weight: 800;
+  position: absolute;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.pokemoncard ul {
+  list-style-position: inside;
+  /* make dot and text close */
+  padding: 0;
+  /* remove browser default padding */
+  margin: 0;
+  /* remove default margin */
+  text-align: center;
+  /* center text under bullets */
+}
+
+.favoritepokimoncard {
+  width: 60px;
+  height: 60px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-image: url("https://www.freeiconspng.com/uploads/heart-png-29.png");
+  background-size: contain;     /* fits the image inside */
+  background-repeat: no-repeat; /* prevents tiling */
+  background-position: center;  /* centers the image */
+  z-index: 10;
+}
+
+.favoritepokimoncard:hover {
+  background-image: url("https://pics.clipartpng.com/Heart_Shape_PNG_Clipart-3166.png");
+}
+
+
+.cardsContainer {
+  display: grid;
+  gap: 20px;
+  grid-template-columns: repeat(auto-fill, minmax(25%, 1fr));
+  justify-content: center;
+  max-width: 1200px;
+  margin: 50px auto 0 auto;
+  justify-items: center;
+}
+
+
+/*hieronder staat de detail view*/
+
+.detailsview {
+  background-color: #3b3b3b;
+  width: 60%;
+  height: auto;
+  padding-bottom: 20px;
+  border-radius: 15px;
+  color: rgb(255, 255, 255);
+  position: absolute;
+  left: 50%;
+  top: 400px;
+  transform: translate(-50%, -50%);
+  box-shadow: 0 0 0 999999vmax rgba(34, 34, 34, 0.85);
+  pointer-events: auto;
+  z-index: 1000;
+  visibility: hidden;
+  border: 4px solid rgb(255, 123, 0);
+  overflow: hidden;
+}
+
+.closebutton {
+  width: 50px;
+  height: 50px;
+  position: absolute;
+  top: 0;
+  right: 0;
+  border-radius: 10px;
+  background-color: rgb(183, 0, 0);
+  border: 1px solid rgb(133, 0, 0);
+  font-size: 40px;
+}
+
+.title {
+  font-size: 50px;
+  font-weight: 800;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  margin: 0 auto;
+  text-decoration: underline;
+}
+
+.img {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  border-radius: 10px;
+  width: clamp(150px, 25vw, 250px);
+  height: clamp(150px, 25vw, 250px);
+  object-fit: cover;
+  overflow: hidden;
+}
+
+.stats {
+  width: 200px;
+  margin: 30px auto;
+}
+
+.addtoteambutton {
+  margin: 20px;
+  margin-top: 50px;
+  width: 200px;
+  height: 40px;
+  color: rgb(255, 255, 255);
+  border: 0;
+  font-weight: 900;
+  font-size: larger;
+  border-radius: 10px;
+  background-color: #373737;
+  position: relative;
+}
+
+.addtoteambutton:after {
+  content: '';
+  width: 104%;
+  height: 114%;
+  border-radius: 10px;
+  position: absolute;
+  top: -7%;
+  left: -2%;
+  background: linear-gradient(to right, orange, rgb(253, 75, 43));
+  box-shadow: 0 0 10px 2px rgb(255, 102, 0);
+  z-index: -1;
+}
+
+.clearteambutton {
+  position: relative;
+  margin: 20px;
+  margin-top: 50px;
+  width: 200px;
+  height: 40px;
+  border: 1px solid black;
+  font-weight: 900;
+  font-size: larger;
+  color: rgb(255, 255, 255);
+  border-radius: 10px;
+  background-color: #373737;
+  box-shadow: inset 0 0 20px 4px rgba(255, 0, 0, 0.6);
+  border: 0;
+}
+
+.clearteambutton::after {
+  content: '';
+  width: 104%;
+  height: 114%;
+  border-radius: 10px;
+  position: absolute;
+  top: -7%;
+  left: -2%;
+  background: linear-gradient(to right, rgb(184, 0, 0), rgb(253, 75, 43));
+  box-shadow: 0 0 4px 2px rgb(255, 0, 0);
+  z-index: -1;
+}
+
+.errormassageteamfull {
+  color: red;
+  font-size: larger;
+  visibility: hidden;
+  display: block;
+}
+
+.deletepokemon {
+  background-color: red;
+  border: 4px solid rgba(210, 22, 22, 0.76);
+  width: 30px;
+  height: 30px;
+  font-weight: 900;
+  border-radius: 6px;
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+.deletepokemon:hover {
+  background-color: rgba(255, 0, 0, 0.49);
+  border: 4px solid rgba(210, 22, 22, 0.76);
+  cursor: pointer;
+}
+
+
+/*media*/
+
+@media (max-width: 1140px) {
   .Team-Container {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: 1fr 1fr;
   }
 }
 
-@media (max-width: 600px) {
+@media (max-width: 800px) {
   .Team-Container {
     grid-template-columns: 1fr;
   }

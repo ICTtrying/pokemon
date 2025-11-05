@@ -12,11 +12,8 @@ export default function Navigation() {
         <div className="nav-links">
           <Link to="/">Home</Link>
           <Link to="/list">List</Link>
+          <Link to="/Favorites">Favorites</Link>
         </div>
-      </nav>
-
-      <nav className="SubNavigation">
-        <img src={SubLogo} alt="SubLogo" className="SubLogo" />
       </nav>
     </>
   );
